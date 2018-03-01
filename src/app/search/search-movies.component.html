@@ -1,0 +1,34 @@
+<div class="ui container">
+  <div class="ui grid">
+    <div class="middle aligned sixteen wide mobile eight wide tablet eight wide computer column">
+      <div class="ui large breadcrumb">
+        <a class="section" routerLink="/home" routerLinkActive="active">
+          <span>Home</span>
+        </a>
+        <i class="right angle icon divider"></i>
+        <div class="active section">
+            <i class="search icon"></i>
+            {{ results }}
+            <span  *ngIf="results < 2" >result found for</span>
+             <span  *ngIf="results > 1" >results found for</span>
+            <span class="ui grey header"> {{ query }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ui link five doubling cards">
+    <div class="card" *ngFor="let movie of movies" [routerLink]="['/movie/'+movie.id]" routerLinkActive="active">
+      <div class="image">
+        <img *ngIf="movie.poster_path" class="ui middle aligned tiny image" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+        <img *ngIf="!movie.poster_path" class="ui middle aligned tiny image" src="https://placehold.it/500x740">
+      </div>
+      <div class="content">
+        <div class="header">
+          {{ movie.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

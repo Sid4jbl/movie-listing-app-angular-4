@@ -1,0 +1,32 @@
+<div class="ui container">
+  <h2 class="ui grey header">
+    {{ selectedMovie?.title }}
+  </h2>
+
+  <div class="ui floating message" id="main" >
+    <div class="ui padded grid" id="content">
+      <div class="middle aligned sixteen wide mobile eight wide tablet four wide computer column">
+        <img *ngIf="selectedMovie?.poster_path" class="ui fluid image" src="https://image.tmdb.org/t/p/w600{{selectedMovie?.poster_path}}">
+      </div>
+
+      <div class="sixteen wide mobile eight wide tablet twelve wide computer column">
+        <div class="ui centered grid">
+          <div  class="center aligned eight wide mobile eight wide tablet five wide computer column">
+            <div class="ui blue statistic">
+              <div class="label">
+                <span>Release date</span></div>
+              <div class="text value">{{ selectedMovie?.release_date }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eight wide column">
+      <div class="ui small orange  fluid button" tabindex="0" (click)="back()">
+        <div class="visible content">
+          <i class="left arrow icon"></i> <span>Back</span>
+      </div>
+    </div>
+  </div>
+</div>

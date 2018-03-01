@@ -1,0 +1,27 @@
+<div class="ui container">
+  <div class="ui grid">
+    <div class="middle aligned sixteen wide mobile eight wide tablet eight wide computer column">
+      <div class="ui large breadcrumb">
+        <div class="active section">
+          <span class="ui grey header">
+            <span>Popular movies</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui link five doubling cards">
+    <div class="card" *ngFor="let movie of movies | async" [routerLink]="['/movie/'+movie.id]" routerLinkActive="active">
+      <div class="image">
+        <img *ngIf="movie.poster_path" class="ui middle aligned tiny image" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+        <img *ngIf="!movie.poster_path" class="ui middle aligned tiny image" src="./../../assets/no-image.png">
+      </div>
+      <div class="content">
+        <div class="header">
+            {{ movie.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

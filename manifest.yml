@@ -1,0 +1,9 @@
+---
+applications:
+  - name: movie-listing-app
+    buildpack: nodejs_buildpack
+    path: dist
+    memory: 64M
+    stack: cflinuxfs2
+    command:  npm run start
+    
