@@ -10,14 +10,14 @@ import { Movie }                    from '../movies/movie';
   styleUrls: ['search-movies.component.css']
 })
 export class SearchMoviesComponent implements OnInit {
-  movies: Movie[];
+  movies: Movie[]=[];;
+  //kidsMovies: Movie[] = [];
   results: number;
   page: number;
   query: string;
 
   constructor(
     private searchService: SearchService,
-    private moviesService: MoviesService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -35,8 +35,11 @@ export class SearchMoviesComponent implements OnInit {
     this.searchService.searchMovies(query, page)
       .subscribe(
         response => {
-          this.movies = response['results'];
-          this.results = response['total_results'];
+          for(let movies of response['results']){
+           if(movies.genre_ids.includes(16) || movies.genre_ids.includes(10751) || movies.genre_ids.includes(878) ) // 16,10751,878 are the genre id for animation,family & science fiction movies respectively;
+          this.movies.push(movies);
+         }
+          this.results = this.movies.length;
         },
         error => console.error(error)
       );

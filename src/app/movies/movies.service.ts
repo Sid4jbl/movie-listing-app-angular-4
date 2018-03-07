@@ -25,13 +25,6 @@ export class MoviesService {
       .catch(this.handleError);
   }
 
-  searchMovies(query: string) {
-    let searchUrl = `${this.searchUrl}?api_key=${this.apiKey}&language=${this.language}&query=${query}`;
-
-    return this.http.get(searchUrl)
-      .map((res) => { return res.json() })
-  }
-
   getDetails(id : number) {
     let detailsUrl = `${this.url}${id}?api_key=${this.apiKey}&language=${this.language}`;
 
