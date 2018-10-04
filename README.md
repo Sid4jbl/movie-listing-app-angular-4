@@ -6,4 +6,4 @@ Steps to run on local machine.
 
 1. npm install
 2. npm start
-3. Open the application in http://localhost:4200
+3. Open the application in http://localhost:4200  kk
